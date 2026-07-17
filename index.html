@@ -7,15 +7,20 @@
     <title>Recivo Support</title>
     <style>
       :root {
-        --bg: #f7f8fc;
-        --card: #ffffff;
-        --text: #172033;
-        --muted: #5c667a;
-        --line: #dbe1ee;
-        --accent: #2f6bff;
-        --accent-soft: rgba(47, 107, 255, 0.12);
-        --shadow: 0 16px 40px rgba(23, 32, 51, 0.08);
-        --radius: 24px;
+        --bg: #f4f7fb;
+        --surface: rgba(255, 255, 255, 0.82);
+        --surface-strong: #ffffff;
+        --text: #121826;
+        --muted: #5b6475;
+        --line: rgba(18, 24, 38, 0.08);
+        --accent: #2563eb;
+        --accent-2: #4f46e5;
+        --accent-soft: rgba(37, 99, 235, 0.12);
+        --shadow: 0 24px 60px rgba(18, 24, 38, 0.10);
+        --shadow-soft: 0 12px 32px rgba(18, 24, 38, 0.06);
+        --radius-xl: 30px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
       }
 
       * {
@@ -25,102 +30,17 @@
       html, body {
         margin: 0;
         padding: 0;
-        background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 55%);
+        min-height: 100%;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
         color: var(--text);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        line-height: 1.6;
-      }
-
-      body {
-        min-height: 100vh;
-      }
-
-      .wrap {
-        max-width: 920px;
-        margin: 0 auto;
-        padding: 40px 20px 56px;
-      }
-
-      .hero {
-        background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
-        border: 1px solid var(--line);
-        border-radius: calc(var(--radius) + 8px);
-        padding: 34px;
-        box-shadow: var(--shadow);
-      }
-
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 14px;
-        border-radius: 999px;
-        background: var(--accent-soft);
-        color: var(--accent);
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        margin-bottom: 18px;
-      }
-
-      h1 {
-        margin: 0 0 10px;
-        font-size: clamp(2rem, 4vw, 3.3rem);
-        line-height: 1.1;
-      }
-
-      .subtitle {
-        margin: 0;
-        max-width: 64ch;
-        font-size: 1.08rem;
-        color: var(--muted);
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 18px;
-        margin-top: 18px;
-      }
-
-      .card {
-        grid-column: span 6;
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 24px;
-        box-shadow: 0 8px 24px rgba(23, 32, 51, 0.04);
-      }
-
-      .card.full {
-        grid-column: 1 / -1;
-      }
-
-      h2 {
-        margin: 0 0 12px;
-        font-size: 1.25rem;
-      }
-
-      p {
-        margin: 0 0 12px;
-        color: var(--text);
-      }
-
-      p.muted, li.muted {
-        color: var(--muted);
-      }
-
-      ul {
-        margin: 0;
-        padding-left: 20px;
-      }
-
-      li {
-        margin: 8px 0;
+        background:
+          radial-gradient(circle at top left, rgba(79, 70, 229, 0.15), transparent 32%),
+          radial-gradient(circle at top right, rgba(37, 99, 235, 0.16), transparent 30%),
+          linear-gradient(180deg, #ffffff 0%, var(--bg) 40%, #edf2f9 100%);
       }
 
       a {
-        color: var(--accent);
+        color: inherit;
         text-decoration: none;
       }
 
@@ -128,129 +48,426 @@
         text-decoration: underline;
       }
 
-      .contact-box {
+      .shell {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 28px 20px 44px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
         display: grid;
-        gap: 10px;
-        padding: 18px;
-        border-radius: 18px;
-        background: #f8faff;
+        place-items: center;
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+        color: white;
+        box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25);
+        font-size: 1.05rem;
+      }
+
+      .nav {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        border-radius: calc(var(--radius-xl) + 6px);
+        background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.74) 100%);
+        backdrop-filter: blur(18px);
+        box-shadow: var(--shadow);
+        padding: 40px;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: -2px -2px auto auto;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(79, 70, 229, 0.22), transparent 70%);
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.4rem, 5vw, 4.2rem);
+        line-height: 1.02;
+        letter-spacing: -0.05em;
+        max-width: 12ch;
+      }
+
+      .subtitle {
+        margin: 16px 0 0;
+        max-width: 68ch;
+        font-size: 1.08rem;
+        line-height: 1.75;
+        color: var(--muted);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 20px;
+        margin-top: 28px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .panel {
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.88);
         border: 1px solid var(--line);
+        box-shadow: var(--shadow-soft);
+        padding: 24px;
+      }
+
+      .panel h2,
+      .panel h3 {
+        margin: 0 0 12px;
+        letter-spacing: -0.03em;
+      }
+
+      .panel p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .contact-item {
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: #f8fbff;
+        border: 1px solid rgba(37, 99, 235, 0.10);
       }
 
       .label {
         display: block;
-        font-size: 13px;
+        margin-bottom: 5px;
+        font-size: 0.82rem;
+        color: var(--muted);
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: var(--muted);
-        margin-bottom: 6px;
       }
 
       .value {
-        font-size: 1rem;
-        font-weight: 600;
+        font-size: 1.02rem;
+        font-weight: 700;
+        color: var(--text);
         word-break: break-word;
       }
 
-      .footer {
-        margin-top: 18px;
-        padding: 18px 4px 0;
-        color: var(--muted);
-        font-size: 0.95rem;
-        text-align: center;
-      }
-
-      .pill-row {
+      .button-row {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 18px;
+        gap: 12px;
+        margin-top: 22px;
       }
 
-      .pill {
+      .button {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 9px 12px;
+        justify-content: center;
+        padding: 12px 18px;
         border-radius: 999px;
-        background: #f3f6ff;
-        color: #2946a8;
-        border: 1px solid #dce5ff;
-        font-size: 0.92rem;
+        border: 1px solid transparent;
+        font-weight: 700;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
       }
 
-      @media (max-width: 760px) {
-        .wrap {
-          padding: 18px 14px 42px;
+      .button:hover {
+        transform: translateY(-1px);
+        text-decoration: none;
+      }
+
+      .button.primary {
+        color: white;
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+        box-shadow: 0 14px 28px rgba(37, 99, 235, 0.24);
+      }
+
+      .button.secondary {
+        color: var(--text);
+        background: rgba(255,255,255,0.7);
+        border-color: var(--line);
+      }
+
+      .section {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 18px;
+      }
+
+      .card {
+        grid-column: span 4;
+        padding: 24px;
+        border-radius: var(--radius-lg);
+        background: var(--surface-strong);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .card.wide {
+        grid-column: span 6;
+      }
+
+      .card.full {
+        grid-column: 1 / -1;
+      }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.15rem;
+        letter-spacing: -0.03em;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .faq {
+        display: grid;
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .faq-item {
+        padding: 18px;
+        border-radius: 18px;
+        background: #fbfcff;
+        border: 1px solid rgba(18, 24, 38, 0.08);
+      }
+
+      .faq-q {
+        font-weight: 700;
+        margin: 0 0 8px;
+      }
+
+      .faq-a {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .info {
+        padding: 16px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, #fbfcff 0%, #f6f9ff 100%);
+        border: 1px solid rgba(18, 24, 38, 0.08);
+      }
+
+      .info strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .footer {
+        margin-top: 22px;
+        padding-top: 18px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 920px) {
+        .hero-grid,
+        .info-grid {
+          grid-template-columns: 1fr;
         }
 
-        .hero,
-        .card {
-          padding: 20px;
-        }
-
-        .card {
+        .card,
+        .card.wide {
           grid-column: 1 / -1;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          padding: 16px 12px 32px;
+        }
+
+        .hero {
+          padding: 24px;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .nav {
+          gap: 10px;
+        }
+
+        .button-row {
+          flex-direction: column;
+        }
+
+        .button {
+          width: 100%;
         }
       }
     </style>
   </head>
   <body>
-    <main class="wrap">
+    <main class="shell">
+      <header class="topbar" aria-label="Site header">
+        <div class="brand">
+          <div class="mark">R</div>
+          <div>
+            <div>Recivo</div>
+            <div class="muted" style="font-size:0.88rem;font-weight:500;">Support Center</div>
+          </div>
+        </div>
+        <nav class="nav" aria-label="Quick links">
+          <a href="#support">Support</a>
+          <a href="#faq">FAQ</a>
+          <a href="#privacy">Privacy</a>
+        </nav>
+      </header>
+
       <section class="hero" aria-labelledby="page-title">
-        <div class="badge">Recivo Support</div>
-        <h1 id="page-title">Help and support for Recivo</h1>
+        <span class="eyebrow">Fast help for Recivo users</span>
+        <h1 id="page-title">Support that feels simple, clear, and human.</h1>
         <p class="subtitle">
           Welcome to the Recivo support page. If you need help, have feedback, or want to report an issue,
-          please contact us using the details below.
+          please reach out using the details below. We aim to respond quickly and keep the experience straightforward.
         </p>
 
-        <div class="pill-row" aria-label="Quick highlights">
-          <div class="pill">Response time: 1–2 business days</div>
-          <div class="pill">Email support available</div>
-          <div class="pill">App Store review ready</div>
+        <div class="hero-grid">
+          <div class="panel" id="support">
+            <h2>Contact support</h2>
+            <p>Use the details below to get in touch about app issues, feedback, or questions.</p>
+            <div class="contact-list">
+              <div class="contact-item">
+                <span class="label">Email</span>
+                <div class="value"><a href="mailto:support@recivo.app">support@recivo.app</a></div>
+              </div>
+              <div class="contact-item">
+                <span class="label">Website</span>
+                <div class="value"><a href="https://recivo.app" target="_blank" rel="noopener">recivo.app</a></div>
+              </div>
+              <div class="contact-item">
+                <span class="label">Response time</span>
+                <div class="value">1–2 business days</div>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <a class="button primary" href="mailto:support@recivo.app">Email support</a>
+              <a class="button secondary" href="https://recivo.app/privacy" target="_blank" rel="noopener">Privacy policy</a>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>At a glance</h2>
+            <p>
+              Recivo helps users organize receipts in a clean, easy-to-use app. If anything is not working as expected,
+              send us the details and we will help.
+            </p>
+            <div class="info-grid">
+              <div class="info">
+                <strong>App name</strong>
+                <span class="muted">Recivo</span>
+              </div>
+              <div class="info">
+                <strong>Support</strong>
+                <span class="muted">Email-based help</span>
+              </div>
+              <div class="info">
+                <strong>Privacy</strong>
+                <span class="muted">Policy linked below</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="grid" aria-label="Support information">
-        <article class="card">
-          <h2>Contact support</h2>
-          <div class="contact-box">
-            <div>
-              <span class="label">Email</span>
-              <div class="value"><a href="mailto:support@recivo.app">support@recivo.app</a></div>
+      <section class="section" aria-label="More information">
+        <article class="card wide" id="faq">
+          <h3>Frequently asked questions</h3>
+          <div class="faq">
+            <div class="faq-item">
+              <p class="faq-q">What is Recivo?</p>
+              <p class="faq-a">Recivo is an app designed to help people manage and organize receipts in a simple way.</p>
             </div>
-            <div>
-              <span class="label">Website</span>
-              <div class="value"><a href="https://recivo.app" target="_blank" rel="noopener">recivo.app</a></div>
+            <div class="faq-item">
+              <p class="faq-q">I found a bug. What should I include?</p>
+              <p class="faq-a">Please include your device model, iOS version, a short description of the issue, and screenshots if possible.</p>
             </div>
           </div>
         </article>
 
-        <article class="card">
-          <h2>Common questions</h2>
-          <p><strong>What is Recivo?</strong><br />Recivo is an app designed to help people manage and organize receipts in a simple way.</p>
-          <p><strong>I found a bug. What should I send?</strong><br />Please include your device model, iOS version, and a short description of the issue.</p>
-        </article>
-
-        <article class="card full">
-          <h2>Need more help?</h2>
+        <article class="card wide" id="privacy">
+          <h3>Privacy</h3>
           <p>
-            If you are contacting us about App Review, please include any account access details or special
-            instructions in your review notes so we can respond quickly.
+            We take privacy seriously. For information about how Recivo handles data, please review our privacy policy.
           </p>
-          <ul>
-            <li>App name: Recivo</li>
-            <li>Support email: <a href="mailto:support@recivo.app">support@recivo.app</a></li>
-            <li>Privacy policy: <a href="https://recivo.app/privacy" target="_blank" rel="noopener">https://recivo.app/privacy</a></li>
-          </ul>
+          <div class="button-row" style="margin-top:16px;">
+            <a class="button secondary" href="https://recivo.app/privacy" target="_blank" rel="noopener">Open privacy policy</a>
+          </div>
         </article>
 
         <article class="card full">
-          <h2>Privacy</h2>
-          <p class="muted">
-            We take privacy seriously. For information about how Recivo handles data, please review our
-            privacy policy at the link above.
+          <h3>Need support for App Review?</h3>
+          <p>
+            If Apple App Review needs access or special instructions, include those details in the review notes in App Store Connect.
+            This page is intended to provide a valid support destination for review and for users who need help with the app.
           </p>
         </article>
       </section>
